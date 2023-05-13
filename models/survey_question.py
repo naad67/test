@@ -15,5 +15,3 @@ class SurveyQuestion(models.Model):
         ('matrix', 'Matrix'),
         ('scale', 'Scale')], string='Question Type',
         compute='_compute_question_type', readonly=False, store=True)
-
-    scale_width = fields.Integer("Scale Width")

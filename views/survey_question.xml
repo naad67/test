@@ -10,28 +10,15 @@
                     <i class="fa fa-minus fa-4x" role="img" aria-label="Single Line" title="Single Line"/>
                 </div>
             </xpath>
-            <xpath expr="//div[@class='col-6']" position="after">
-                <div class="col-6"
-                     attrs="{'invisible': [('question_type', '!=', 'scale')]}">
-                    <field name="scale_width" string="Correct Answer"/>
-                </div>
-            </xpath>
         </field>
-
     </record>
+
     <data>
-        <template id="question_container_inherit" inherit_id="survey.question_container">
-            <xpath expr="//div[@class='mb-4']" position="after">
-                <t t-if="question.question_type == 'scale'">
-                    <t t-call="web.question_scale"/>
-                </t>
+        <template id="question_container_inherit" inherit_id="survey.question_text_box">
+            <xpath expr="//div[@class='o_survey_comment_container p-0']" position="replace">
+                4ort
             </xpath>
         </template>
-
-        <template id="web.question_scale" name="Question: Scale">
-
-        </template>
-
     </data>
 </odoo>
 
