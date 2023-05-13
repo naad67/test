@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="survey_survey_form_inherit" model="ir.ui.view">
+        <field name="name">survey.question.inherit</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='col-lg-6 offset-lg-3 o_preview_questions']" position="inside">
+                <div attrs="{'invisible': [('question_type', '!=', 'scale')]}">
+                    <i class="fa fa-minus fa-4x" role="img" aria-label="Single Line" title="Single Line"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='col-6']" position="after">
+                <div class="col-6"
+                     attrs="{'invisible': [('question_type', '!=', 'scale')]}">
+                    <field name="scale_width" string="Correct Answer"/>
+                </div>
+            </xpath>
+        </field>
+
+    </record>
+    <data>
+        <template id="question_container_inherit" inherit_id="survey.question_container">
+            <xpath expr="//div[@class='mb-4']" position="after">
+                <t t-if="question.question_type == 'scale'">
+                    <t t-call="web.question_scale"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="web.question_scale" name="Question: Scale">
+
+        </template>
+
+    </data>
+</odoo>
+
